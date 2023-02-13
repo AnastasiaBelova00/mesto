@@ -15,20 +15,35 @@
 @import url(../blocks/profile/__button/_act/profile__button_act_edit.css);
 @import url(../blocks/profile/__button/_act/profile__button_act_add.css);
 
+@import url(../blocks/elements/elements.css);
+
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__picture/card__picture.css);
+@import url(../blocks/card/__topic/card__topic.css);
+@import url(../blocks/card/__like/card__like.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
 /* * {
   border: 1px solid red;
 } */
 
-.card {
+.popup {
 }
-
-.card__picture {
+.popup__container {
 }
-.card__topic {
+.popup__title {
 }
-
-.button {
+.popup__input {
 }
-
-.card__like {
+.popup__input_name {
+}
+.popup__input_discription {
+}
+.popup__button {
+}
+.popup__button_act_submit {
+}
+.popup__button_act_exit {
 }

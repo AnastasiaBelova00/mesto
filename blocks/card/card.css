@@ -1,0 +1,12 @@
+.card {
+  background-color: #fff;
+  max-height: 361px;
+  max-width: 282px;
+  border-radius: 10px;
+  row-gap: 25px;
+  padding-bottom: 25px;
+  display: grid;
+  grid-template-areas:
+    "picture picture"
+    "topic like";
+}
