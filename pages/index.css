@@ -25,25 +25,10 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/* * {
-  border: 1px solid red;
-} */
-
-.popup {
-}
-.popup__container {
-}
-.popup__title {
-}
-.popup__input {
-}
-.popup__input_name {
-}
-.popup__input_discription {
-}
-.popup__button {
-}
-.popup__button_act_submit {
-}
-.popup__button_act_exit {
-}
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__button/_act/popup__button_act_submit.css);
+@import url(../blocks/popup/__button/_act/popup__button_act_exit.css);

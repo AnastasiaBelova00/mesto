@@ -3,6 +3,9 @@
   line-height: 1.21em;
   font-weight: 400;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   grid-area: discription;
 }
 
