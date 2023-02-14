@@ -1,8 +1,8 @@
-.popup__button_act_exit {
+.popup__button-exit {
   width: 32px;
   height: 32px;
   padding: 0;
-  background-image: url(../../../../images/close-icon.svg);
+  background-image: url(../../../images/close-icon.svg);
   border: none;
   background-color: transparent;
   background-position: center;
@@ -14,15 +14,15 @@
   opacity: 1;
 }
 
-.popup__button_act_exit:hover {
+.popup__button-exit:hover {
   opacity: 0.6;
   transition: opacity 0.2s ease 0.1s;
   cursor: pointer;
 }
 
 @media screen and (max-width: 550px) {
-  .popup__button_act_exit {
-    background-image: url(../../../../images/close-icon-mobile.svg);
+  .popup__button-exit {
+    background-image: url(../../../images/close-icon-mobile.svg);
     width: 20px;
     height: 20px;
     top: -36px;
