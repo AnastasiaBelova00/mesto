@@ -1,7 +1,5 @@
 # _Проект: МЕСТО_
 
-## https://anastasiabelova00.github.io/russian-travel/
-
 ### Обзор
 
 ---
@@ -21,3 +19,5 @@
 - Работа с popup
 
 Реализована адаптивная верстка для декстопной и мобильной версий
+
+### https://anastasiabelova00.github.io/mesto/
