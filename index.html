@@ -26,9 +26,17 @@
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__discription">Исследователь океана</p>
-            <button class="button profile__button-edit" type="button"></button>
+            <button
+              class="profile__button-edit"
+              aria-label="Кнопка редактирования"
+              type="button"
+            ></button>
           </div>
-          <button class="button profile__button-add" type="button"></button>
+          <button
+            class="profile__button-add"
+            aria-label="Кнопка добавления"
+            type="button"
+          ></button>
         </section>
         <section class="elements">
           <div class="card">
@@ -38,7 +46,11 @@
               alt="Горы в Адыгее"
             />
             <h2 class="card__topic">Адыгея</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
           <div class="card">
             <img
@@ -47,7 +59,11 @@
               alt="Вид на море и лодку в Балаклаве"
             />
             <h2 class="card__topic">Балаклава</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
           <div class="card">
             <img
@@ -56,7 +72,11 @@
               alt="Вид на приют Фишт"
             />
             <h2 class="card__topic">Приют Фишт</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
           <div class="card">
             <img
@@ -65,7 +85,11 @@
               alt="Заснеженная гора Оштен"
             />
             <h2 class="card__topic">Гора Оштен</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
 
           <div class="card">
@@ -75,7 +99,11 @@
               alt="Вид на мост и Финский залив в Санкт-Петербурге"
             />
             <h2 class="card__topic">Санкт-Петербург</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
           <div class="card">
             <img
@@ -84,7 +112,11 @@
               alt="Горы в Сочи"
             />
             <h2 class="card__topic">Сочи</h2>
-            <button class="button card__like" type="button"></button>
+            <button
+              class="card__like"
+              aria-label="Кнопка лайка"
+              type="button"
+            ></button>
           </div>
         </section>
       </main>
@@ -92,39 +124,36 @@
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
       <div class="popup">
-        <form class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input
-            name="name-input"
-            value=""
-            class="popup__input popup__input_name"
-            type="text"
-            placeholder="Имя"
-          />
-          <input
-            name="job-input"
-            value=""
-            class="popup__input popup__input_discription"
-            type="text"
-            placeholder="Описание"
-          />
-          <button
-            class="popup__button popup__button-submit"
-            type="submit"
-            value="save"
-          >
-            Сохранить
-          </button>
+        <div class="popup__container">
           <button
             class="popup__button popup__button-exit"
             type="button"
             value="close"
-          >
-            Закрыть
-          </button>
-        </form>
+            aria-label="Кнопка закрытия"
+          ></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form class="popup__form" name="popup-form">
+            <input
+              name="name-input"
+              value=""
+              class="popup__input popup__input_el_name"
+              type="text"
+              placeholder="Имя"
+            />
+            <input
+              name="job-input"
+              value=""
+              class="popup__input popup__input_el_discription"
+              type="text"
+              placeholder="Описание"
+            />
+            <button class="popup__button-submit" type="submit" value="save">
+              Сохранить
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

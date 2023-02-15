@@ -10,11 +10,11 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
 }
 
 .profile__button-edit:hover {
   opacity: 0.6;
-  transition: opacity 0.2s ease 0.1s;
   cursor: pointer;
 }
 

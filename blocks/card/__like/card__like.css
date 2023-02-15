@@ -12,10 +12,10 @@
   justify-self: end;
   padding-right: 62px;
   opacity: 1;
+  transition: opacity 0.2s ease 0.1s;
 }
 
 .card__like:hover {
-  opacity: 0.6;
-  transition: opacity 0.2s ease 0.1s;
+  opacity: 0.5;
   cursor: pointer;
 }
