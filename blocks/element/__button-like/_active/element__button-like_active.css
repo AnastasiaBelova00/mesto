@@ -1,4 +1,5 @@
-.card__like_active {
+.element__button-like_active {
   background-image: url(../../../../images/like-active.svg);
   opacity: 1;
+  transition: background-image 0.2s linear;
 }

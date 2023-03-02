@@ -1,4 +1,4 @@
-.card {
+.element {
   background-color: #fff;
   max-width: 282px;
   border-radius: 10px;
@@ -6,6 +6,6 @@
   padding-bottom: 25px;
   display: grid;
   grid-template-areas:
-    "picture picture"
-    "topic like";
+    'picture picture'
+    'topic like';
 }
