@@ -4,6 +4,7 @@
   border-radius: 10px;
   row-gap: 25px;
   padding-bottom: 25px;
+  position: relative;
   display: grid;
   grid-template-areas:
     'picture picture'

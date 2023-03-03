@@ -13,38 +13,38 @@
         <img
           class="header__logo"
           src="./images/header-logo.svg"
-          alt="Логотип Место Россия"
-        />
+          alt="Логотип Место Россия" />
       </header>
+
       <main class="content">
         <section class="profile">
           <img
             class="profile__image"
             src="./images/profile-image.jpg"
-            alt="Фото владельца профиля"
-          />
+            alt="Фото владельца профиля" />
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <p class="profile__discription">Исследователь океана</p>
             <button
               class="profile__button-edit"
               aria-label="Кнопка редактирования"
-              type="button"
-            ></button>
+              type="button"></button>
           </div>
           <button
             class="profile__button-add"
             aria-label="Кнопка добавления"
-            type="button"
-          ></button>
+            type="button"></button>
         </section>
+
         <section class="elements">
           <ul class="elements__grid"></ul>
         </section>
       </main>
+
       <footer class="footer">
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
       </footer>
+
       <!-- Попап редактирования -->
       <div class="popup popup_type_profile">
         <div class="popup__container">
@@ -52,8 +52,7 @@
             class="popup__button-exit"
             type="button"
             value="close"
-            aria-label="Кнопка закрытия"
-          ></button>
+            aria-label="Кнопка закрытия"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form class="popup__form" name="popup-form">
             <input
@@ -61,21 +60,20 @@
               value=""
               class="popup__input popup__input_el_name"
               type="text"
-              placeholder="Имя"
-            />
+              placeholder="Имя" />
             <input
               name="job-input"
               value=""
               class="popup__input popup__input_el_discription"
               type="text"
-              placeholder="Описание"
-            />
+              placeholder="Описание" />
             <button class="popup__button-submit" type="submit" value="save">
               Сохранить
             </button>
           </form>
         </div>
       </div>
+
       <!-- Попап добавления карточек -->
       <div class="popup popup_type_add-card">
         <div class="popup__container">
@@ -83,8 +81,7 @@
             class="popup__button-exit"
             type="button"
             value="close"
-            aria-label="Кнопка закрытия"
-          ></button>
+            aria-label="Кнопка закрытия"></button>
           <h2 class="popup__title">Новое место</h2>
           <form class="popup__form" name="popup-form">
             <input
@@ -92,22 +89,21 @@
               value=""
               class="popup__input popup__input_el_name-card"
               type="text"
-              placeholder="Название"
-            />
+              placeholder="Название" />
             <input
               name="job-input"
               value=""
               class="popup__input popup__input_el_link-card"
               type="text"
-              placeholder="Ссылка на картинку"
-            />
+              placeholder="Ссылка на картинку" />
             <button class="popup__button-submit" type="submit" value="save">
               Создать
             </button>
           </form>
         </div>
       </div>
-      <template class="cards-template">
+
+      <template class="card-template">
         <li class="element">
           <button type="button" class="element__button-delete"></button>
           <img src="#" alt="#" class="element__image" />
@@ -116,8 +112,7 @@
             <button
               aria-label="Нравится"
               type="button"
-              class="element__button-like"
-            ></button>
+              class="element__button-like"></button>
           </div>
         </li>
       </template>
