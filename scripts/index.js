@@ -15,45 +15,45 @@ const popupAddCard = document.querySelector('.popup_type_add-card'); //попа�
 let nameAddCardInput = document.querySelector('.popup__input_el_name-card'); //редактирование названия карточки
 let linkAddCardInput = document.querySelector('.popup__input_el_link-card'); //редактирование
 
-// //карточки
-// const elements = document.querySelector('.elements');
+//карточки
+const elements = document.querySelector('.elements');
 
-// //универсальная функция открытия попапа
-// function openPopup(popup) {
-//   popup.classList.add('popup_opened');
-// }
+//универсальная функция открытия попапа
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
 
-// //универсальная функция закрытия попапа
-// function closePopup(popup) {
-//   popup.classList.remove('popup_opened');
-// }
+//универсальная функция закрытия попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
-// //кнопка открытия попапа редактирования//
-// editProfileButton.addEventListener('click', function () {
-//   openPopup(popupProfile);
-//   nameInput.value = profileName.textContent;
-//   jobInput.value = profileDiscription.textContent;
-// });
+//кнопка открытия попапа редактирования//
+editProfileButton.addEventListener('click', function () {
+  openPopup(popupProfile);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileDiscription.textContent;
+});
 
-// // кнопка закрытия попапапов
-// closePopupButton.forEach((button) => {
-//   const popup = button.closest('.popup');
-//   button.addEventListener('click', () => closePopup(popup));
-// });
+// кнопка закрытия попапапов
+closePopupButton.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
-// //функция редактирования формы
-// function handleFormSubmit(evt) {
-//   evt.preventDefault();
-//   profileName.textContent = nameInput.value;
-//   profileDiscription.textContent = jobInput.value;
-//   closePopup(popup);
-// }
-// editForm.addEventListener('submit', handleFormSubmit); //сохранить форму
+//функция редактирования формы
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileDiscription.textContent = jobInput.value;
+  closePopup(popup);
+}
+editForm.addEventListener('submit', handleFormSubmit); //сохранить форму
 
-// //кнопка попапа добавления карточек//
-// addCardButton.addEventListener('click', function () {
-//   openPopup(popupAddCard);
-// });
+//кнопка попапа добавления карточек//
+addCardButton.addEventListener('click', function () {
+  openPopup(popupAddCard);
+});
 
 const cards = [
   {
@@ -87,8 +87,6 @@ const cards = [
     alt: 'Изображение скалы и Байкала',
   },
 ];
-
-const elements = document.querySelector('.elements');
 
 //создание карточки
 function createCard(card) {
