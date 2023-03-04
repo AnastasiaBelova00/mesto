@@ -1,7 +1,6 @@
 .element__button-like {
   width: 22px;
   height: 19px;
-  padding: 0;
   background-image: url(../../../images/like.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -9,8 +8,7 @@
   border: none;
   grid-area: like;
   align-self: center;
-  justify-self: end;
-  padding-right: 62px;
+  padding-left: 75px;
   opacity: 1;
   transition: opacity 0.2s ease 0.1s;
 }

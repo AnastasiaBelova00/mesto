@@ -90,6 +90,7 @@ const cards = [
 
 const elements = document.querySelector('.elements');
 
+//создание карточки
 function createCard(card) {
   const newCard = document
     .querySelector('.card-template')
@@ -106,16 +107,19 @@ function createCard(card) {
   elements.prepend(newCard);
 }
 
+//перебор всех карточек и вывод на страницу
 cards.forEach(createCard);
 
-function deleteCardButton(event) {
-  const button = event.target;
+//функция удаления карточки
+function deleteCardButton(evt) {
+  const button = evt.target;
   const card = button.closest('.element');
   card.remove();
 }
 
-function likeCard(event) {
-  event.target.classList.toggle('element__like-button_active');
+//функция лайка
+function likeCard(evt) {
+  evt.target.classList.toggle('element__button-like_active');
 }
 
 // function handleFormSubmit(evt) {
