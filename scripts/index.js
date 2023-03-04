@@ -12,8 +12,7 @@ const jobInput = document.querySelector('.popup__input_el_discription'); //ре�
 //попап добавления карточек
 const addCardButton = document.querySelector('.profile__button-add'); //кнопка добавления карточки
 const popupAddCard = document.querySelector('.popup_type_add-card'); //попап добавления карточек
-
-//карточки
+const formAddCard = document.querySelector('#addCardForm'); //форма редактирования попапа
 const elements = document.querySelector('.elements');
 
 //универсальная функция открытия попапа
@@ -57,32 +56,32 @@ const cards = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Изображение гор Архыза',
+    alt: 'Архыз',
   },
   {
     name: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'Изображение озера в Челябинской области',
+    alt: 'Челябинская область',
   },
   {
     name: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Изображение многоэтажных домов',
+    alt: 'Иваново',
   },
   {
     name: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Изображение гор Камчатки',
+    alt: 'Камчатка',
   },
   {
     name: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Изображение железной дороги и леса',
+    alt: 'Холмогорский район',
   },
   {
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Изображение скалы и Байкала',
+    alt: 'Байкал',
   },
 ];
 
@@ -118,10 +117,7 @@ function likeCard(evt) {
   evt.target.classList.toggle('element__button-like_active');
 }
 
-// const nameAddCardInput = document.querySelector('.popup__input_el_name-card'); //редактирование названия карточки
-// const linkAddCardInput = document.querySelector('.popup__input_el_link-card'); //редактирование
-const formAddCard = document.querySelector('#addCardForm'); //форма редактирования попапа
-
+//создание карточки через форму
 function handleFormSubmitAdd(evt) {
   evt.preventDefault();
   const form = evt.target;
@@ -138,16 +134,22 @@ function handleFormSubmitAdd(evt) {
 formAddCard.addEventListener('submit', handleFormSubmitAdd);
 
 //зум-попап
+const popupImage = document.querySelector('.popup_type_image');
+const popupZoomImage = document.querySelector('.popup__image');
+const popupHeadingImage = document.querySelector('.popup__image-heading');
+const cardImage = document.querySelectorAll('.element__image');
+
+//передача данных и открытие
 function openZoomImage(evt) {
   popupHeadingImage.textContent = evt.target.alt;
   popupZoomImage.src = evt.target.src;
   openPopup(popupImage);
 }
 
-//кнопка на все изображения
+//кнопки на все изображения
 cardImage.forEach((button) => {
   button.addEventListener('click', openZoomImage);
 });
 
-
+//открытие всех изображений карточек
 cardImage.forEach(openZoomImage);
