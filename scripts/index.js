@@ -138,6 +138,16 @@ function handleFormSubmitAdd(evt) {
 formAddCard.addEventListener('submit', handleFormSubmitAdd);
 
 //зум-попап
-const popupImage = document.querySelector('.popup_type_image');
-const zoomImage = document.querySelector('.popup__image');
-const headingImage = document.querySelector('.popup__image-heading');
+function openZoomImage(evt) {
+  popupHeadingImage.textContent = evt.target.alt;
+  popupZoomImage.src = evt.target.src;
+  openPopup(popupImage);
+}
+
+//кнопка на все изображения
+cardImage.forEach((button) => {
+  button.addEventListener('click', openZoomImage);
+});
+
+
+cardImage.forEach(openZoomImage);
