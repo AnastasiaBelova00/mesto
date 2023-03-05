@@ -59,25 +59,30 @@ buttonAddCard.addEventListener('click', function () {
 function createCard(card) {
   const newCard = cardTemplate.cloneNode(true);
   const cardHeading = newCard.querySelector('.element__title');
+
   cardHeading.textContent = card.name;
   const cardImage = newCard.querySelector('.element__image');
   cardImage.setAttribute('src', card.link);
-  cardImage.setAttribute('alt', card.alt);
+  cardImage.setAttribute('alt', card.name);
+
   cardImage.addEventListener('click', openZoomImage);
+
   const deleteButton = newCard.querySelector('.element__button-delete');
   deleteButton.addEventListener('click', deleteCardButton);
+
   const likeButton = newCard.querySelector('.element__button-like');
   likeButton.addEventListener('click', likeCard);
-  elementsContainer.prepend(newCard);
+  return newCard;
 }
 
-//перебор всех карточек и вывод на страницу
-cards.forEach(createCard);
+//функция добавления карточки
+function addCard(card) {
+  const cardItem = createCard(card);
+  elementsContainer.prepend(cardItem);
+}
 
-// function addCard(name, link) {
-//   const cardElement = createCard(name, link);
-//   elementsContainer.prepend(cardElement);
-// }
+//перебор всех карточек массива и их добавление
+cards.forEach(addCard);
 
 //функция удаления карточки
 function deleteCardButton(evt) {
@@ -101,7 +106,7 @@ function handleFormSubmitAdd(evt) {
     name: name,
     link: link,
   };
-  createCard(card);
+  addCard(card);
   closePopup(popupAddCard);
   form.reset();
 }
@@ -111,7 +116,6 @@ formAddCard.addEventListener('submit', handleFormSubmitAdd);
 const popupImage = document.querySelector('.popup_type_image');
 const popupZoomImage = document.querySelector('.popup__image');
 const popupHeadingImage = document.querySelector('.popup__image-heading');
-// const cardImage = document.querySelector('.element__image');
 
 //передача данных и открытие
 function openZoomImage(evt) {
@@ -119,11 +123,3 @@ function openZoomImage(evt) {
   popupZoomImage.src = evt.target.src;
   openPopup(popupImage);
 }
-
-// //кнопки на все изображения
-// cardImage.forEach((button) => {
-//   button.addEventListener('click', openZoomImage);
-// });
-
-// //открытие всех изображений карточек
-// cardImage.forEach(openZoomImage);
