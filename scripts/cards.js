@@ -5,7 +5,7 @@ const cards = [
   },
   {
     name: 'Санкт-Петербург',
-    link: './images/saint-petersburg.jpg',
+    link: './images/spb.jpg',
   },
   {
     name: 'Адыгея',
