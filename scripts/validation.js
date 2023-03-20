@@ -44,6 +44,7 @@ const checkInputValidity = (form, input, config) => {
   }
 };
 
+//проверка инпутов
 const hasInvalidInput = (inputList) => {
   return inputList.some((input) => {
     return !input.validity.valid;
@@ -61,6 +62,7 @@ const toggleButtonState = (inputList, button, inactiveButtonClass) => {
   }
 };
 
+//слушатели
 const setEventListeners = (form, config) => {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
   const button = form.querySelector(config.submitButtonSelector);
@@ -72,6 +74,7 @@ const setEventListeners = (form, config) => {
   });
 };
 
+//включение валидации
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((form) => {
