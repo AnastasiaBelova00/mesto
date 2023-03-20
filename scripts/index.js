@@ -35,11 +35,32 @@ buttonEditProfile.addEventListener('click', function () {
   jobInput.value = profileDiscription.textContent;
 });
 
-// кнопка закрытия попапапов
-popupCloseButtons.forEach((button) => {
+// закрытие попапапов на крестик
+function closePopupByCrossButton(button) {
   const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
+  closePopup(popup);
+}
+popupCloseButtons.forEach((button) => {
+  button.addEventListener('click', () => closePopupByCrossButton(button));
 });
+
+//закрытие на ESC
+function closePopupByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+}
+document.addEventListener('keydown', closePopupByEsc);
+
+//закрытие на Overlay
+function closePopupByOverlay(evt) {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(openedPopup);
+  }
+}
+document.addEventListener('click', closePopupByOverlay);
 
 //функция редактирования формы
 function handleFormSubmitProfile(evt) {

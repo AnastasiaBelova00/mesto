@@ -54,19 +54,29 @@
             value="close"
             aria-label="Кнопка закрытия"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form" id="editForm" name="form">
+          <form class="popup__form" id="editForm" name="form" novalidate>
             <input
-              name="name-input"
+              name="name"
+              id="name"
               value=""
               class="popup__input popup__input_el_name"
               type="text"
-              placeholder="Имя" />
+              placeholder="Имя"
+              minlength="2"
+              maxlength="40"
+              required />
+            <span class="popup__error name-error"></span>
             <input
-              name="job-input"
+              name="discription"
+              id="discription"
               value=""
               class="popup__input popup__input_el_discription"
               type="text"
-              placeholder="Описание" />
+              placeholder="Описание"
+              minlength="2"
+              maxlength="200"
+              required />
+            <span class="popup__error discription-error"></span>
             <button class="popup__button-submit" type="submit" value="save">
               Сохранить
             </button>
@@ -83,19 +93,27 @@
             value="close"
             aria-label="Кнопка закрытия"></button>
           <h2 class="popup__title">Новое место</h2>
-          <form class="popup__form" id="addCardForm" name="form">
+          <form class="popup__form" id="addCardForm" name="form" novalidate>
             <input
-              name="name-input"
+              name="title"
+              id="title"
               value=""
               class="popup__input popup__input_el_name-card"
               type="text"
-              placeholder="Название" />
+              placeholder="Название"
+              minlength="2"
+              maxlength="40"
+              required />
+            <span class="popup__error title-error"></span>
             <input
-              name="link-input"
+              name="link"
+              id="link"
               value=""
               class="popup__input popup__input_el_link-card"
-              type="text"
-              placeholder="Ссылка на картинку" />
+              type="url"
+              placeholder="Ссылка на картинку"
+              required />
+            <span class="popup__error link-error"></span>
             <button class="popup__button-submit" type="submit" value="save">
               Создать
             </button>
@@ -131,6 +149,7 @@
         </li>
       </template>
     </div>
+    <script src="./scripts/validation.js"></script>
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
