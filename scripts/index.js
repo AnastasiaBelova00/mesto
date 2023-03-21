@@ -17,15 +17,20 @@ const cardTemplate = document
   .content.querySelector('.element');
 const nameAddImput = document.querySelector('.popup__input_el_name-card');
 const linkImput = document.querySelector('.popup__input_el_link-card');
+const buttonSubmitAddCard = document.querySelector(
+  '.popup__button-submit_type_add-card'
+);
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 //универсальная функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);
 }
 
 //кнопка открытия попапа редактирования//
@@ -51,13 +56,11 @@ function closePopupByEsc(evt) {
     closePopup(openedPopup);
   }
 }
-document.addEventListener('keydown', closePopupByEsc);
 
 //закрытие на Overlay
 function closePopupByOverlay(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(openedPopup);
+    closePopup(evt.target);
   }
 }
 document.addEventListener('click', closePopupByOverlay);
@@ -73,6 +76,7 @@ formEditProfile.addEventListener('submit', handleFormSubmitProfile); //сохр�
 
 //кнопка попапа добавления карточек//
 buttonAddCard.addEventListener('click', function () {
+  disableButton(buttonSubmitAddCard, config);
   openPopup(popupAddCard);
 });
 
@@ -128,8 +132,8 @@ function handleFormSubmitAdd(evt) {
     link: link,
   };
   addCard(card);
-  closePopup(popupAddCard);
   form.reset();
+  closePopup(popupAddCard);
 }
 formAddCard.addEventListener('submit', handleFormSubmitAdd);
 
@@ -142,5 +146,6 @@ const popupHeadingImage = document.querySelector('.popup__image-heading');
 function openZoomImage(evt) {
   popupHeadingImage.textContent = evt.target.alt;
   popupZoomImage.src = evt.target.src;
+  popupZoomImage.alt = evt.target.alt;
   openPopup(popupImage);
 }
