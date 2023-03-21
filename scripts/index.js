@@ -77,6 +77,8 @@ formEditProfile.addEventListener('submit', handleFormSubmitProfile); //сохр�
 //кнопка попапа добавления карточек//
 buttonAddCard.addEventListener('click', function () {
   disableButton(buttonSubmitAddCard, config);
+  hideInputError(formAddCard, nameAddImput, config);
+  hideInputError(formAddCard, linkImput, config);
   openPopup(popupAddCard);
 });
 
