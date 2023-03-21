@@ -79,6 +79,7 @@ buttonAddCard.addEventListener('click', function () {
   disableButton(buttonSubmitAddCard, config);
   hideInputError(formAddCard, nameAddImput, config);
   hideInputError(formAddCard, linkImput, config);
+  formAddCard.reset();
   openPopup(popupAddCard);
 });
 
