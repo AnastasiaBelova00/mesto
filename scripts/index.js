@@ -1,4 +1,5 @@
 import Card from './Card.js';
+import { config, disableButton, hideInputError } from './validation.js';
 
 //массив
 const cards = [
@@ -28,16 +29,6 @@ const cards = [
   },
 ];
 
-//параметры для валидации
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  inactiveButtonClass: 'popup__button-submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
-
 const popupProfile = document.querySelector('.popup_type_profile'); //попап профиля
 const buttonEditProfile = document.querySelector('.profile__button-edit'); //кнопка редактирования профиля
 const popupCloseButtons = document.querySelectorAll('.popup__button-exit'); //кнопки закрытия попапа
@@ -59,7 +50,7 @@ const nameAddImput = document.querySelector('.popup__input_el_name-card'); //п�
 const linkImput = document.querySelector('.popup__input_el_link-card'); //поле адреса попапа места
 const buttonSubmitAddCard = document.querySelector(
   '.popup__button-submit_type_add-card'
-); //сабмит папапа места
+); //сабмит попапа места
 
 //зум-попап
 const popupImage = document.querySelector('.popup_type_image');
@@ -121,18 +112,18 @@ formEditProfile.addEventListener('submit', handleFormSubmitProfile); //сохр�
 
 //кнопка попапа добавления карточек//
 buttonAddCard.addEventListener('click', function () {
-  // disableButton(buttonSubmitAddCard, config);
-  // hideInputError(formAddCard, nameAddImput, config);
-  // hideInputError(formAddCard, linkImput, config);
-  // formAddCard.reset();
+  disableButton(buttonSubmitAddCard, config);
+  hideInputError(formAddCard, nameAddImput, config);
+  hideInputError(formAddCard, linkImput, config);
+  formAddCard.reset();
   openPopup(popupAddCard);
 });
 
 //передача данных и открытие зум-попапа
-function handleCardClick(card) {
-  popupHeadingImage.textContent = card.alt;
-  popupZoomImage.src = card.src;
-  popupZoomImage.alt = card.alt;
+function handleCardClick(name, link) {
+  popupHeadingImage.textContent = name;
+  popupZoomImage.src = link;
+  popupZoomImage.alt = name;
   openPopup(popupImage);
 }
 

@@ -23,13 +23,6 @@ export default class Card {
     this._element.remove();
   }
 
-  // _handleCardClick() {
-  //   this._popupHeadingImage.textContent = this._name;
-  //   this._popupZoomImage.src = this._link;
-  //   this._popupZoomImage.alt = this._name;
-  //   this._openPopup(popupImage);
-  // }
-
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
       this._handleCardLike();
@@ -38,7 +31,7 @@ export default class Card {
       this._handleCardDelete();
     });
     this._cardPicture.addEventListener('click', () => {
-      this._handleCardClick(this._cardPicture);
+      this._handleCardClick(this._name, this._link);
     });
   }
 

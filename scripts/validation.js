@@ -1,3 +1,15 @@
+export { config, disableButton, hideInputError };
+
+//параметры для валидации
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-submit',
+  inactiveButtonClass: 'popup__button-submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
+
 //вывести ошибки в инпуте
 const showInputError = (form, input, errorMessage, config) => {
   const error = form.querySelector(`.${input.id}-error`);
