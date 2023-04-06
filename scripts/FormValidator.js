@@ -41,11 +41,11 @@ export default class FormValidator {
   }
 
   //сабмит
-  _toggleButtonState(inputList, button, config) {
-    if (this._hasInvalidInput(inputList, config)) {
-      this._disableButton(button, config);
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._disableButton();
     } else {
-      this._enableButton(button, config);
+      this._enableButton();
     }
   }
 
@@ -62,7 +62,7 @@ export default class FormValidator {
   }
 
   //слушатели
-  _setEventListeners(form, config) {
+  _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
@@ -73,10 +73,18 @@ export default class FormValidator {
   }
 
   //включение валидации
-  enableValidation(config) {
+  enableValidation() {
     this._form.addEventListener('submit', function (evt) {
       evt.preventDefault();
     });
-    this._setEventListeners(form, config);
+    this._setEventListeners();
+  }
+
+  //очистка импутов и блок кнопки
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+    });
   }
 }
