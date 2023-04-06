@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import { config, disableButton, hideInputError } from './validation.js';
+import FormValidator from './FormValidator.js';
 
 //массив
 const cards = [
@@ -28,6 +28,16 @@ const cards = [
     link: './images/gumbashi.jpg',
   },
 ];
+
+//параметры для валидации
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-submit',
+  inactiveButtonClass: 'popup__button-submit_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible',
+};
 
 const popupProfile = document.querySelector('.popup_type_profile'); //попап профиля
 const buttonEditProfile = document.querySelector('.profile__button-edit'); //кнопка редактирования профиля
@@ -112,10 +122,6 @@ formEditProfile.addEventListener('submit', handleFormSubmitProfile); //сохр�
 
 //кнопка попапа добавления карточек//
 buttonAddCard.addEventListener('click', function () {
-  disableButton(buttonSubmitAddCard, config);
-  hideInputError(formAddCard, nameAddImput, config);
-  hideInputError(formAddCard, linkImput, config);
-  formAddCard.reset();
   openPopup(popupAddCard);
 });
 
@@ -129,7 +135,7 @@ function handleCardClick(name, link) {
 
 //функция создания экземпляра карточки
 function createCard(card) {
-  const cardItem = new Card(card, '#cardTemplate', handleCardClick);
+  const cardItem = new Card(card, '.card-template', handleCardClick);
   return cardItem.generateCard();
 }
 
@@ -158,6 +164,12 @@ function handleFormSubmitAdd(evt) {
   closePopup(popupAddCard);
 }
 formAddCard.addEventListener('submit', handleFormSubmitAdd);
+
+const profileFormValidator = new FormValidator(formEditProfile, config);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(formAddCard, config);
+cardFormValidator.enableValidation();
 
 // //создание карточки
 // function createCard(card) {
