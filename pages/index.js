@@ -1,5 +1,6 @@
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import Section from '../scripts/components/Section.js';
 
 //массив
 const cards = [
@@ -126,19 +127,32 @@ function handleCardClick(name, link) {
   openPopup(popupImage);
 }
 
-//функция создания экземпляра карточки
-function createCard(card) {
-  const cardItem = new Card(card, '.card-template', handleCardClick);
-  return cardItem.generateCard();
-}
+const cardList = new Section(
+  {
+    items: cards,
+    renderer: (item) => {
+      const card = new Card(item, '.card-template', handleCardClick);
+      const cardElement = card.generateCard();
+      cardList.setItem(cardElement);
+    },
+  },
+  '.elements'
+);
+cardList.renderItems();
 
-//рендер добавления карточки
-function renderCard(card) {
-  elementsContainer.prepend(createCard(card));
-}
+// //функция создания экземпляра карточки
+// function createCard(card) {
+//   const cardItem = new Card(card, '.card-template', handleCardClick);
+//   return cardItem.generateCard();
+// }
 
-//перебор всего массива
-cards.forEach(renderCard);
+// //рендер добавления карточки
+// function renderCard(card) {
+//   elementsContainer.prepend(createCard(card));
+// }
+
+// //перебор всего массива
+// cards.forEach(renderCard);
 
 //создание карточки через форму
 function handleFormSubmitAdd(evt) {
