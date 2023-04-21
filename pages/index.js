@@ -43,25 +43,14 @@ const config = {
   errorClass: 'popup__error_visible',
 };
 
-// const popups = document.querySelectorAll('.popup'); //все попапы
-// const popupProfile = document.querySelector('.popup_type_profile'); //попап профиля
 const buttonEditProfile = document.querySelector('.profile__button-edit'); //кнопка редактирования профиля
-const profileName = document.querySelector('.profile__name'); //имя профиля
-const profileDescription = document.querySelector('.profile__description'); //описание профиля
 const formEditProfile = document.forms['editForm']; //форма редактирования попапа
 const nameInput = document.querySelector('.popup__input_el_name'); //редактирование имени
 const descriptionInput = document.querySelector('.popup__input_el_description'); //редактирование описания
-
-//попап добавления карточек
 const buttonAddCard = document.querySelector('.profile__button-add'); //кнопка добавления карточки
-// const popupAddCard = document.querySelector('.popup_type_add-card'); //попап добавления карточек
 const formAddCard = document.forms['addCardForm']; //форма редактирования попапа
-// const elementsContainer = document.querySelector('.elements'); //контейнер карточек
 const nameAddImput = document.querySelector('.popup__input_el_name-card'); //поле имени попапа места
 const linkImput = document.querySelector('.popup__input_el_link-card'); //поле адреса попапа места
-// const buttonSubmitAddCard = document.querySelector(
-//   '.popup__button-submit_type_add-card'
-// ); //сабмит попапа места
 
 //отрисовка 6 карточек
 const cardList = new Section(
@@ -131,6 +120,7 @@ buttonEditProfile.addEventListener('click', function () {
 });
 
 function handleFormSubmitEdit() {
+  userInfo.setUserInfo(nameInput.value, descriptionInput.value);
   popupEditProfile.closePopup();
 }
 
