@@ -81,13 +81,13 @@ popupZoomImage.setEventListeners();
 
 //клик по карточке
 function handleCardClick(name, link) {
-  popupZoomImage.openPopup(name, link);
+  popupZoomImage.open(name, link);
 }
 
 //открытие попапа добавления карточек//
 buttonAddCard.addEventListener('click', function () {
   cardFormValidator.resetValidation();
-  popupAddCard.openPopup();
+  popupAddCard.open();
 });
 
 //попап добавления новой карточки
@@ -111,7 +111,7 @@ function handleFormSubmitAdd() {
   };
   const card = createCard(cardData);
   cardList.setItem(card);
-  popupAddCard.closePopup();
+  popupAddCard.close();
 }
 
 //информация о пользователе
@@ -122,7 +122,7 @@ const userInfo = new UserInfo({
 
 //кнопка открытия попапа редактирования//
 buttonEditProfile.addEventListener('click', function () {
-  popupEditProfile.openPopup();
+  popupEditProfile.open();
   const profileInfo = userInfo.getUserInfo();
   nameInput.value = profileInfo.name;
   descriptionInput.value = profileInfo.description;
@@ -130,7 +130,7 @@ buttonEditProfile.addEventListener('click', function () {
 
 function handleFormSubmitEdit() {
   userInfo.setUserInfo(nameInput.value, descriptionInput.value);
-  popupEditProfile.closePopup();
+  popupEditProfile.close();
 }
 
 const popupEditProfile = new PopupWithForm(
