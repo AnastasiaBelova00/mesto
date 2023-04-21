@@ -5,31 +5,40 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 
+import './index.css';
+
+import fisht from '../images/fisht.jpg';
+import spb from '../images/spb.jpg';
+import adigeya from '../images/adigeya.jpg';
+import balaklava from '../images/balaklava.jpg';
+import oshten from '../images/oshten.jpg';
+import gumbashi from '../images/gumbashi.jpg';
+
 //массив
 const cards = [
   {
     name: 'Приют Фишт',
-    link: './images/fisht.jpg',
+    link: fisht,
   },
   {
     name: 'Санкт-Петербург',
-    link: './images/spb.jpg',
+    link: spb,
   },
   {
     name: 'Адыгея',
-    link: './images/adigeya.jpg',
+    link: adigeya,
   },
   {
     name: 'Балаклава',
-    link: './images/balaklava.jpg',
+    link: balaklava,
   },
   {
     name: 'Оштен',
-    link: './images/oshten.jpg',
+    link: oshten,
   },
   {
     name: 'Перевал Гумбаши',
-    link: './images/gumbashi.jpg',
+    link: gumbashi,
   },
 ];
 
