@@ -17,10 +17,16 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__image"
-            src="<%=require('./images/profile-avatar.jpg')%>"
-            alt="Фото владельца профиля" />
+          <div class="profile__avatar-container">
+            <img
+              class="profile__image"
+              src="<%=require('./images/profile-avatar.jpg')%>"
+              alt="Фото владельца профиля" />
+            <button
+              class="profile__button-avatar"
+              type="button"
+              aria-label="Кнопка смены аватара"></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Майкл Скотт</h1>
             <p class="profile__description">Лучший в мире босс</p>
@@ -66,7 +72,7 @@
               required />
             <span class="popup__error name-error"></span>
             <input
-              name="description"
+              name="about"
               id="description"
               value=""
               class="popup__input popup__input_el_description"
@@ -76,7 +82,10 @@
               maxlength="200"
               required />
             <span class="popup__error description-error"></span>
-            <button class="popup__button-submit" type="submit" value="save">
+            <button
+              class="popup__button-submit popup__button-submit_type_edit"
+              type="submit"
+              value="save">
               Сохранить
             </button>
           </form>
@@ -121,7 +130,7 @@
               class="popup__button-submit popup__button-submit_type_add-card"
               type="submit"
               value="save">
-              Создать
+              Сохранить
             </button>
           </form>
         </div>
@@ -147,13 +156,69 @@
           <img src="#" alt="" class="element__image" />
           <div class="element__info">
             <h2 class="element__title"></h2>
-            <button
-              aria-label="Нравится"
-              type="button"
-              class="element__button-like"></button>
+            <div class="element__like-container">
+              <button
+                aria-label="Нравится"
+                type="button"
+                class="element__button-like"></button>
+              <p class="element__like-counter"></p>
+            </div>
           </div>
         </li>
       </template>
+
+      <!-- Попап подтверждения удаления -->
+      <div class="popup popup_type_confirm">
+        <div class="popup__container">
+          <button
+            class="popup__button-exit popup__close"
+            type="button"
+            value="close"
+            aria-label="Кнопка закрытия"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="popup__form" id="confirmForm" name="confirmForm">
+            <button
+              class="popup__button-submit popup__button-submit_type_confirm"
+              type="submit"
+              value="save">
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Попап обновления аватара -->
+      <div class="popup popup_type_avatar">
+        <div class="popup__container">
+          <button
+            class="popup__button-exit popup__close"
+            type="button"
+            value="close"
+            aria-label="Кнопка закрытия"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form
+            class="popup__form"
+            id="avatarForm"
+            name="avatarForm"
+            novalidate>
+            <input
+              name="avatar"
+              id="avatar"
+              value=""
+              class="popup__input popup__input_el_avatar"
+              type="url"
+              placeholder="Ссылка на картинку"
+              required />
+            <span class="popup__error avatar-error"></span>
+            <button
+              class="popup__button-submit popup__button-submit_type_avatar"
+              type="submit"
+              value="save">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

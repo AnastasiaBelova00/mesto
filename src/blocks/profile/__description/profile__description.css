@@ -4,14 +4,12 @@
   line-height: 1.21em;
   font-weight: 400;
   margin: 0;
-  text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  grid-area: discription;
+  grid-area: description;
 }
 
 @media screen and (max-width: 700px) {
-  .profile__diecription {
+  .profile__description {
     font-size: 14px;
     padding-left: 43px;
   }

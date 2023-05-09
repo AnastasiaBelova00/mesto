@@ -1,8 +1,8 @@
 .profile__info {
   display: grid;
   grid-template-areas:
-    "name button"
-    "discription .";
+    'name button'
+    'description .';
   column-gap: 18px;
   row-gap: 8px;
   align-items: baseline;
