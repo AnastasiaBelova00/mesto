@@ -37,6 +37,8 @@ const submitAddCard = document.querySelector(
   '.popup__button-submit_type_add-card'
 );
 
+let userId;
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
   headers: {
@@ -143,19 +145,24 @@ const popupAddCard = new PopupWithForm(
 );
 popupAddCard.setEventListeners();
 
-//создание карточки
+//создание экземпляра карточки
 function createCard(data) {
-  const card = new Card(data, '.card-template', handleCardClick);
-  return card.generateCard();
+  const newCard = new Card(data, '.card-template', handleCardClick);
+
+  return newCard.generateCard();
 }
+
+// //функция лайков
+// function handleLikeClick(card) {
+//   if (card.isLiked())
+// }
 
 //отрисовка карточек
 const cardList = new Section(
   {
     renderer: (item) => {
-      const card = new Card(item, '.card-template', handleCardClick);
-      const cardElement = card.generateCard();
-      cardList.setItem(cardElement);
+      const card = createCard(item);
+      cardList.setItem(card);
     },
   },
   '.elements'

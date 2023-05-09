@@ -1,9 +1,26 @@
 export default class Card {
-  constructor(data, cardTemplateElement, handleCardClick) {
+  constructor(
+    data,
+    // userId,
+    cardTemplateElement,
+    handleCardClick
+    // handleDeleteIconClick,
+    // handleAddLike,
+    // handleDeleteLike
+  ) {
     this._name = data.name;
     this._link = data.link;
+    // this._alt = data.name;
+    // this._likes = data.likes;
+    // this._userId = userId; //текущий пользователь
+    // // this._id = data._id; //карточка
+    // this._ownerId = data.owner._id; //владелец
+
     this._cardTemplateElement = cardTemplateElement;
     this._handleCardClick = handleCardClick;
+    // this._handleDeleteIconClick = handleDeleteIconClick;
+    // this._handleAddLike = handleAddLike;
+    // this._handleDeleteLike = handleDeleteLike;
   }
 
   _getTemplate() {
@@ -23,12 +40,18 @@ export default class Card {
     this._element.remove();
   }
 
+  // _checkDeleteButtonIcon() {
+  //   if (this._ownerId !== this._userId) {
+  //     this._deleteButton.remove();
+  //   }
+  // }
+
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
       this._handleCardLike();
     });
     this._deleteButton.addEventListener('click', () => {
-      this._handleCardDelete();
+      this._handleCardDelete(this);
     });
     this._cardPicture.addEventListener('click', () => {
       this._handleCardClick(this._name, this._link);
