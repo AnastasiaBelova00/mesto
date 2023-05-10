@@ -49,18 +49,15 @@ const api = new Api({
   },
 });
 
-//получение информации о пользователе
-api
-  .getUserInfo()
-  .then((res) => (userId = res._id))
-  .then((res) => userInfo.getUserInfo(res))
-  .catch((err) => console.error(`Ошибка: ${err}`));
-
-//получение всех карточек с сервера
-api
-  .getInitialCards()
-  .then((res) => cardList.renderItems(res))
-  .catch((err) => console.error(`Ошибка: ${err}`));
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([profileInfo, cardsData]) => {
+    userId = profileInfo._id;
+    userInfo.setUserInfo(profileInfo);
+    cardList.renderItems(cardsData);
+  })
+  .catch((err) => {
+    console.error(`Ошибка: ${err}`);
+  });
 
 //информация о пользователе
 const userInfo = new UserInfo({
@@ -89,15 +86,17 @@ buttonEditProfile.addEventListener('click', function () {
 
 //сабмит редактирования
 function handleFormSubmitEdit(data) {
+  popupEditProfile.renderLoading(true);
   api
     .editUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
-      submitProfileEdit.textContent = 'Сохранить';
       popupEditProfile.close();
     })
-    .catch((err) => console.error(`Ошибка: ${err}`));
-  submitProfileEdit.textContent = 'Сохранение...';
+    .catch((err) => console.error(`Ошибка: ${err}`))
+    .finally(() => {
+      popupEditProfile.renderLoading(false);
+    });
 }
 
 //попап редактирования и слушатели
@@ -110,15 +109,17 @@ popupEditProfile.setEventListeners();
 //ПОПАП АВАТАРА
 //сабмит аватара
 function handleFormSubmitAvatar(data) {
+  popupAvatar.renderLoading(true);
   api
     .changeUserAvatar(data)
     .then((res) => {
       userInfo.setUserInfo(res);
-      submitUserAvatar.textContent = 'Сохранить';
       popupAvatar.close();
     })
-    .catch((err) => console.error(`Ошибка: ${err}`));
-  submitUserAvatar.textContent = 'Сохранение...';
+    .catch((err) => console.error(`Ошибка: ${err}`))
+    .finally(() => {
+      popupAvatar.renderLoading(false);
+    });
 }
 
 //попап редактирования аватара
@@ -185,16 +186,18 @@ const cardList = new Section(
 
 //сабмит формы добавления карточки
 function handleFormSubmitAdd(data) {
+  popupAddCard.renderLoading(true);
   api
     .addCard(data)
     .then((res) => {
       const card = createCard(res);
       cardList.setItem(card);
-      submitAddCard.textContent = 'Сохранить';
       popupAddCard.close();
     })
-    .catch((err) => console.error(`Ошибка: ${err}`));
-  submitAddCard.textContent = 'Сохранение...';
+    .catch((err) => console.error(`Ошибка: ${err}`))
+    .finally(() => {
+      popupAddCard.renderLoading(false);
+    });
 }
 
 //функция лайков
@@ -226,14 +229,17 @@ popupConfirm.setEventListeners();
 //удаление карточки
 function handleCardDelete(card) {
   const submitCardDelete = () => {
+    popupConfirm.renderDeleting(true);
     api
       .deleteCard(card.cardId)
       .then(() => {
         card.removeCard();
-        submitConfirm.textContent = 'Да';
+        popupConfirm.close();
       })
-      .catch((err) => console.error(`Ошибка: ${err}`));
-    submitConfirm.textContent = 'Удаление...';
+      .catch((err) => console.error(`Ошибка: ${err}`))
+      .finally(() => {
+        popupConfirm.renderDeleting(false);
+      });
   };
   popupConfirm.setSubmitAction(submitCardDelete);
   popupConfirm.open();
