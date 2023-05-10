@@ -4,9 +4,8 @@ export default class Card {
     userId,
     cardTemplateElement,
     handleCardClick,
-    handleLikeClick
-    // handleDeleteIconClick,
-    // handleDeleteLike
+    handleLikeClick,
+    handleCardDelete
   ) {
     this._name = data.name;
     this._link = data.link;
@@ -19,7 +18,7 @@ export default class Card {
     this._cardTemplateElement = cardTemplateElement;
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
-    // this._handleCardDelete = handleCardDelete;
+    this._handleCardDelete = handleCardDelete;
     // this._handleDeleteIconClick = handleDeleteIconClick;
     // this._handleAddLike = handleAddLike;
     // this._handleDeleteLike = handleDeleteLike;
@@ -70,6 +69,10 @@ export default class Card {
     }
   }
 
+  deleteCard() {
+    this._element.remove();
+  }
+
   _setEventListeners() {
     this._likeButton.addEventListener('click', () => {
       this._handleLikeClick(this);
@@ -96,6 +99,11 @@ export default class Card {
 
     this._likeCounter = this._element.querySelector('.element__like-counter');
     this._likeCounter.textContent = this._likes.length;
+
+    //для отображения после обновления???
+    if (this.isLiked()) {
+      this._likeButton.classList.toggle('element__button-like_active');
+    }
 
     this._showDeleteButtonIcon(); //отображаем корзины
 

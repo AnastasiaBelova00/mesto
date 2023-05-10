@@ -5,6 +5,7 @@ import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js';
+import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
 
 import './index.css';
 import { data } from 'autoprefixer';
@@ -23,8 +24,6 @@ const buttonEditProfile = document.querySelector('.profile__button-edit'); //к�
 const formEditProfile = document.forms['editForm']; //форма редактирования попапа
 const buttonAddCard = document.querySelector('.profile__button-add'); //кнопка добавления карточки
 const formAddCard = document.forms['addCardForm']; //форма редактирования попапа
-const nameAddInput = document.querySelector('.popup__input_el_name-card'); //поле имени попапа места
-const linkInput = document.querySelector('.popup__input_el_link-card'); //поле адреса попапа места
 const buttonAvatar = document.querySelector('.profile__button-avatar'); //кнопка редактирования аватара
 const formAvatar = document.forms['avatarForm']; //форма аватара
 const submitProfileEdit = document.querySelector(
