@@ -63,14 +63,6 @@ export default class Api {
     }).then(this._checkStatus);
   }
 
-  //удаляем карточку
-  deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this._headers,
-    }).then(this._checkStatus);
-  }
-
   //добавляем лайк
   addLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
@@ -82,6 +74,14 @@ export default class Api {
   //убираем лайк
   deleteLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    }).then(this._checkStatus);
+  }
+
+  //удаляем карточку
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then(this._checkStatus);

@@ -66,6 +66,16 @@ const userInfo = new UserInfo({
   selectorUserAvatar: '.profile__image',
 });
 
+//ВАЛИДАЦИЯ
+const profileFormValidator = new FormValidator(formEditProfile, config);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(formAddCard, config);
+cardFormValidator.enableValidation();
+
+const avatarFormValidator = new FormValidator(formAvatar, config);
+avatarFormValidator.enableValidation();
+
 //ПОПАП РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 //кнопка открытия попапа редактирования//
 buttonEditProfile.addEventListener('click', function () {
@@ -152,31 +162,11 @@ function createCard(data) {
     userId,
     '.card-template',
     handleCardClick,
-    handleLikeClick
+    handleLikeClick,
+    handleCardDelete
   );
 
   return newCard.generateCard();
-}
-
-//функция лайков
-function handleLikeClick(card) {
-  if (!card.isLiked()) {
-    api
-      .addLike(card.cardId)
-      .then((res) => {
-        card.changeLikes();
-        card.countUserLikes(res);
-      })
-      .catch((err) => console.error(`Ошибка: ${err}`));
-  } else {
-    api
-      .deleteLike(card.cardId)
-      .then((res) => {
-        card.changeLikes();
-        card.countUserLikes(res);
-      })
-      .catch((err) => console.error(`Ошибка: ${err}`));
-  }
 }
 
 //отрисовка карточек
@@ -204,12 +194,42 @@ function handleFormSubmitAdd(data) {
   submitAddCard.textContent = 'Сохранение...';
 }
 
-//ВАЛИДАЦИЯ
-const profileFormValidator = new FormValidator(formEditProfile, config);
-profileFormValidator.enableValidation();
+//функция лайков
+function handleLikeClick(card) {
+  if (!card.isLiked()) {
+    api
+      .addLike(card.cardId)
+      .then((res) => {
+        card.changeLikes();
+        card.countUserLikes(res);
+      })
+      .catch((err) => console.error(`Ошибка: ${err}`));
+  } else {
+    api
+      .deleteLike(card.cardId)
+      .then((res) => {
+        card.changeLikes();
+        card.countUserLikes(res);
+      })
+      .catch((err) => console.error(`Ошибка: ${err}`));
+  }
+}
 
-const cardFormValidator = new FormValidator(formAddCard, config);
-cardFormValidator.enableValidation();
+//ПОПАП УДАЛЕНИЯ
+//попап удаления
+const popupConfirm = new PopupWithConfirm('.popup_type_confirm');
+popupConfirm.setEventListeners();
 
-const avatarFormValidator = new FormValidator(formAvatar, config);
-avatarFormValidator.enableValidation();
+//удаление карточки
+function handleCardDelete(card) {
+  const submitCardDelete = () => {
+    api
+      .deleteCard(card.cardId)
+      .then(() => {
+        card.removeCard();
+      })
+      .catch((err) => console.error(`Ошибка: ${err}`));
+  };
+  popupConfirm.setSubmitAction(submitCardDelete);
+  popupConfirm.open();
+}
