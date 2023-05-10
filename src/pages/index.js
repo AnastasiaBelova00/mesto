@@ -47,16 +47,17 @@ const api = new Api({
   },
 });
 
+//получение информации о пользователе
+api
+  .getUserInfo()
+  .then((res) => (userId = res._id))
+  .then((res) => userInfo.getUserInfo(res))
+  .catch((err) => console.error(`Ошибка: ${err}`));
+
 //получение всех карточек с сервера
 api
   .getInitialCards()
   .then((res) => cardList.renderItems(res))
-  .catch((err) => console.error(`Ошибка: ${err}`));
-
-//получение информации о пользователе
-api
-  .getUserInfo()
-  .then((res) => userInfo.getUserInfo(res))
   .catch((err) => console.error(`Ошибка: ${err}`));
 
 //информация о пользователе
@@ -147,15 +148,37 @@ popupAddCard.setEventListeners();
 
 //создание экземпляра карточки
 function createCard(data) {
-  const newCard = new Card(data, '.card-template', handleCardClick);
+  const newCard = new Card(
+    data,
+    userId,
+    '.card-template',
+    handleCardClick,
+    handleLikeClick
+  );
 
   return newCard.generateCard();
 }
 
-// //функция лайков
-// function handleLikeClick(card) {
-//   if (card.isLiked())
-// }
+//функция лайков
+function handleLikeClick(card) {
+  if (!card.isLiked()) {
+    api
+      .addLike(card.cardId)
+      .then((res) => {
+        card.changeLikes();
+        card.countUserLikes(res);
+      })
+      .catch((err) => console.error(`Ошибка: ${err}`));
+  } else {
+    api
+      .deleteLike(card.cardId)
+      .then((res) => {
+        card.changeLikes();
+        card.countUserLikes(res);
+      })
+      .catch((err) => console.error(`Ошибка: ${err}`));
+  }
+}
 
 //отрисовка карточек
 const cardList = new Section(
