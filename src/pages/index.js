@@ -35,6 +35,9 @@ const submitUserAvatar = document.querySelector(
 const submitAddCard = document.querySelector(
   '.popup__button-submit_type_add-card'
 );
+const submitConfirm = document.querySelector(
+  '.popup__button-submit_type_confirm'
+);
 
 let userId;
 
@@ -227,8 +230,10 @@ function handleCardDelete(card) {
       .deleteCard(card.cardId)
       .then(() => {
         card.removeCard();
+        submitConfirm.textContent = 'Да';
       })
       .catch((err) => console.error(`Ошибка: ${err}`));
+    submitConfirm.textContent = 'Удаление...';
   };
   popupConfirm.setSubmitAction(submitCardDelete);
   popupConfirm.open();
