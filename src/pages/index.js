@@ -7,37 +7,18 @@ import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js';
 import PopupWithConfirm from '../scripts/components/PopupWithConfirm.js';
 
+import {
+  config,
+  buttonEditProfile,
+  formEditProfile,
+  buttonAddCard,
+  formAddCard,
+  buttonAvatar,
+  formAvatar,
+} from '../scripts/utils/constants.js';
+
 import './index.css';
 import { data } from 'autoprefixer';
-
-//параметры для валидации
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-submit',
-  inactiveButtonClass: 'popup__button-submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible',
-};
-
-const buttonEditProfile = document.querySelector('.profile__button-edit'); //кнопка редактирования профиля
-const formEditProfile = document.forms['editForm']; //форма редактирования попапа
-const buttonAddCard = document.querySelector('.profile__button-add'); //кнопка добавления карточки
-const formAddCard = document.forms['addCardForm']; //форма редактирования попапа
-const buttonAvatar = document.querySelector('.profile__button-avatar'); //кнопка редактирования аватара
-const formAvatar = document.forms['avatarForm']; //форма аватара
-const submitProfileEdit = document.querySelector(
-  '.popup__button-submit_type_edit'
-);
-const submitUserAvatar = document.querySelector(
-  '.popup__button-submit_type_avatar'
-);
-const submitAddCard = document.querySelector(
-  '.popup__button-submit_type_add-card'
-);
-const submitConfirm = document.querySelector(
-  '.popup__button-submit_type_confirm'
-);
 
 let userId;
 
@@ -131,7 +112,7 @@ popupAvatar.setEventListeners();
 
 //кнопка открытия попапа аватара
 buttonAvatar.addEventListener('click', function () {
-  cardFormValidator.resetValidation();
+  avatarFormValidator.resetValidation();
   popupAvatar.open();
 });
 
