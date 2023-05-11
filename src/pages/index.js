@@ -31,10 +31,10 @@ const api = new Api({
 });
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then(([profileInfo, cardsData]) => {
+  .then(([profileInfo, cardsInfo]) => {
     userId = profileInfo._id;
     userInfo.setUserInfo(profileInfo);
-    cardList.renderItems(cardsData);
+    cardList.renderItems(cardsInfo);
   })
   .catch((err) => {
     console.error(`Ошибка: ${err}`);
